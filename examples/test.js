@@ -16,7 +16,7 @@ pm.login({email: config.email, password: config.password}, function(err, resp) {
 });
 
 pm.init(config, function(err) {
-    console.log('login object', require('util').inspect(pm, {depth: 20});
+    console.log('login object', require('util').inspect(pm, {depth: 20}));
     if(err) return console.log("error", err);
     // pm.getLibrary(function(err, library) {
     //     if(err) console.error(err);
