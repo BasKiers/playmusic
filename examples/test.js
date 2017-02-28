@@ -7,16 +7,16 @@
 var fs = require('fs');
 var PlayMusic = require('../');
 var util = require('util');
+var config = require('./config.json')
 
 var pm = new PlayMusic();
-var config = JSON.parse(fs.readFileSync("config.json"));
 
 pm.login({email: config.email, password: config.password}, function(err, resp) {
-    console.log(err, resp);
+//    console.log(err, resp);
 });
 
 pm.init(config, function(err) {
-    console.log('login object', require('util').inspect(pm, {depth: 20}));
+//    console.log('login object', util.inspect(pm, {depth: 20}));
     if(err) return console.log("error", err);
     // pm.getLibrary(function(err, library) {
     //     if(err) console.error(err);
@@ -42,7 +42,7 @@ pm.init(config, function(err) {
     // });
 
     pm.getPlayLists(function(err, data) {
-        console.log('playlists', data.data.items);
+        console.log('playlists', err, util.inspect(data, {depth: 20}));
     });
     //
     // pm.getPlayListEntries(function(err, data) {
