@@ -16,6 +16,7 @@ pm.login({email: config.email, password: config.password}, function(err, resp) {
 });
 
 pm.init(config, function(err) {
+    console.log('login object', require('util').inspect(pm, {depth: 20});
     if(err) return console.log("error", err);
     // pm.getLibrary(function(err, library) {
     //     if(err) console.error(err);
@@ -27,23 +28,22 @@ pm.init(config, function(err) {
     //     });
     // });
 
-    pm.search("bastille lost fire", 5, function(err, data) {
-        if(err) return console.error(err);
+    // pm.search("bastille lost fire", 5, function(err, data) {
+    //     if(err) return console.error(err);
 
-        var song = data.entries.sort(function(a, b) {
-            return a.score < b.score;
-        }).shift();
-        console.log(util.inspect(song, {depth: 10}));
-        pm.getStreamUrl(song.track.nid, function(err, streamUrl) {
-            if(err) console.error(err);
-            console.log(streamUrl);
-        });
-    });
-
-    //
-    // pm.getPlayLists(function(err, data) {
-    //     console.log(data.data.items);
+    //     var song = data.entries.sort(function(a, b) {
+    //         return a.score < b.score;
+    //     }).shift();
+    //     console.log(util.inspect(song, {depth: 10}));
+    //     pm.getStreamUrl(song.track.nid, function(err, streamUrl) {
+    //         if(err) console.error(err);
+    //         console.log(streamUrl);
+    //     });
     // });
+
+    pm.getPlayLists(function(err, data) {
+        console.log('playlists', data.data.items);
+    });
     //
     // pm.getPlayListEntries(function(err, data) {
     //     console.log(data.data.items);
